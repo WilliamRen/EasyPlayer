@@ -164,7 +164,6 @@ public class PlayActivity extends AppCompatActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         params.weight = 1;
         item.setLayoutParams(params);
-        ViewCompat.setTransitionName(item, "video_animation");
           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             item.setId(View.generateViewId());
         } else {
