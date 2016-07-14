@@ -264,7 +264,7 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
     }
 
     private void startRending(Surface surface) {
-        mStreamRender = new EasyRTSPClient(getContext(), "F94CAB947C2786773C95DC05244DF8CA", surface, mResultReceiver);
+        mStreamRender = new EasyRTSPClient(getContext(), "E2E90B0867DBB86BF1450BCD01664592", surface, mResultReceiver);
         mStreamRender.start(mUrl, mType, RTSPClient.EASY_SDK_VIDEO_FRAME_FLAG | RTSPClient.EASY_SDK_AUDIO_FRAME_FLAG, "admin", "admin");
     }
 
