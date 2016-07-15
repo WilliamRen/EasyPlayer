@@ -56,21 +56,21 @@ import java.util.UUID;
 public class PlayFragment extends Fragment implements TextureView.SurfaceTextureListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private static final String TAG = "PlayFragment";
+    protected static final String ARG_PARAM1 = "param1";
+    protected static final String ARG_PARAM2 = "param2";
+    protected static final String TAG = "PlayFragment";
 
     // TODO: Rename and change types of parameters
-    private String mUrl;
-    private int mType;
+    protected String mUrl;
+    protected int mType;
 
-    private EasyRTSPClient mStreamRender;
-    private ResultReceiver mResultReceiver;
-    private int mWidth;
-    private int mHeight;
-    private View.OnLayoutChangeListener listener;
-    private TextureView surfaceView;
-    private ImageView cover;
+    protected EasyRTSPClient mStreamRender;
+    protected ResultReceiver mResultReceiver;
+    protected int mWidth;
+    protected int mHeight;
+    protected View.OnLayoutChangeListener listener;
+    protected TextureView surfaceView;
+    protected ImageView cover;
 
     public void setSelected(boolean selected) {
         surfaceView.animate().scaleX(selected ? 0.9f : 1.0f);
@@ -205,7 +205,7 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
         parent.addOnLayoutChangeListener(listener);
     }
 
-    private static void saveBitmapInFile(final String path, Bitmap bitmap) {
+    protected static void saveBitmapInFile(final String path, Bitmap bitmap) {
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(path);
@@ -234,11 +234,11 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
         super.onDestroyView();
     }
 
-    private boolean isLandscape() {
+    protected boolean isLandscape() {
         return getActivity().getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE || getActivity().getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE;
     }
 
-    private void fixPlayerRatio(View renderView, int maxWidth, int maxHeight, int width, int height) {
+    protected void fixPlayerRatio(View renderView, int maxWidth, int maxHeight, int width, int height) {
         if (width == 0 || height == 0) {
             return;
         }
@@ -259,12 +259,12 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
         renderView.requestLayout();
     }
 
-    private void fixPlayerRatio(View renderView, int maxWidth, int maxHeight) {
+    protected void fixPlayerRatio(View renderView, int maxWidth, int maxHeight) {
         fixPlayerRatio(renderView, maxWidth, maxHeight, mWidth, mHeight);
     }
 
-    private void startRending(Surface surface) {
-        mStreamRender = new EasyRTSPClient(getContext(), "E2E90B0867DBB86BF1450BCD01664592", surface, mResultReceiver);
+    protected void startRending(Surface surface) {
+        mStreamRender = new EasyRTSPClient(getContext(), "F94CAB947C2786773C95DC05244DF8CA", surface, mResultReceiver);
         mStreamRender.start(mUrl, mType, RTSPClient.EASY_SDK_VIDEO_FRAME_FLAG | RTSPClient.EASY_SDK_AUDIO_FRAME_FLAG, "admin", "admin");
     }
 
